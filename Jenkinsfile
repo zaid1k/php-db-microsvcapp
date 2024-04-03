@@ -14,7 +14,7 @@ pipeline {
                         withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                             echo "Building the Docker image"
                             sh "scp -o StrictHostKeyChecking=no -r devserverconfig ${DEV_server_IP}:/home/ec2-user/"
-                            sh "scp -o StrictHostKeyChecking=no ${DEV_server_IP} 'bash ~/devserverconfig/docker-script.sh'"
+                            sh "ssh -o StrictHostKeyChecking=no ${DEV_server_IP} 'bash /home/ec2-user/devserverconfig/docker-script.sh'"
                             sh "ssh ${DEV_server_IP} sudo docker build -t ${IMAGE_NAME} /home/ec2-user/devserverconfig"
                             sh "ssh ${DEV_server_IP} sudo docker login -u $USERNAME -p $PASSWORD"
                             sh "ssh ${DEV_server_IP} sudo docker push ${IMAGE_NAME}"  
