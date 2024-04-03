@@ -1,22 +1,23 @@
-version: "3.8"  # Specifies the version of Docker Compose syntax being used.
+version: "3.8"  
 
-services:  # Defines the services that compose your application.
+services:  
 
-  web:  # Configuration for the 'web' service.
-    image: "${DOCKER_PHP_IMAGE}"  # Specifies the Docker image to use for the 'web' service.
-    ports:  # Specifies port mappings for the 'web' service.
+  web:
+    image: "${DOCKER_PHP_IMAGE}"
+    ports:
       - "8001-8002:80"  
-      deploy:  # Specifies deployment options for the 'web' service.
-          replicas: 2  # Sets the number of replicas to 2, creating two instances of the 'web' service.
-    depends_on:  # Specifies dependencies for the 'web' service.
-      - mysql  # The 'web' service depends on the 'mysql' service.
+    deploy:
+      replicas: 2
+    depends_on:
+      - mysql  
 
-  mysql:  # Configuration for the 'mysql' service.
-    image: zaid786/java-mvn-privaterepos:mysql  # Specifies the Docker image to use for the 'mysql' service.
-    environment:  # Specifies environment variables for the 'mysql' service.
-      MYSQL_ROOT_PASSWORD: password  # Sets the root password for MySQL.
+  mysql:
+    image: zaid786/java-mvn-privaterepos:mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
     volumes:
       - db_data:/var/lib/mysql
 
 volumes:
-  db_data: {}
+  db_data:
+
