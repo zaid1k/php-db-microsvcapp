@@ -2,8 +2,8 @@ pipeline{
     agent none
     environment{
         IMAGE_NAME='zaid786/java-mvn-privaterepos:php$BUILD_NUMBER'
-        DEV_server_IP='ec2-user@13.200.235.125'
-        TEST_server_IP='ec2-user@13.233.159.130'
+        DEV_server_IP='ec2-user@13.233.159.130'
+        TEST_server_IP='ec2-user@13.233.115.182'
     }
     
     stages{
