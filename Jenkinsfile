@@ -1,5 +1,5 @@
 pipeline{
-    agent none
+    agent any
     environment{
         IMAGE_NAME='zaid786/java-mvn-privaterepos:php$BUILD_NUMBER'
         DEV_server_IP='ec2-user@13.233.159.130'
