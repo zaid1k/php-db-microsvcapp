@@ -1,4 +1,10 @@
 FROM php:7.0-apache
-RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
-COPY index.php  /var/www/html
-expose 80
+
+# Install MySQLi extension
+RUN docker-php-ext-install mysqli
+
+# Copy index.php to Apache document root
+COPY index.php /var/www/html/
+
+# Expose port 80 (not necessary but serves as documentation)
+EXPOSE 80
