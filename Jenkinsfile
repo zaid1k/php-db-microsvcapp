@@ -26,7 +26,7 @@ pipeline {
         stage('Run the php_db app on test server on TEST_SERVER') {
             steps {
                 script {
-                    sshagent(['TEST_SERVER']) {
+                    sshagent(['DEV_SERVER']) {
                         withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                             echo "Building the Docker image"
                             sh "scp -o StrictHostKeyChecking=no -r testserverconfig ${TEST_server_IP}:/home/ec2-user/"
