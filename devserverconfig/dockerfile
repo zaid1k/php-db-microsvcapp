@@ -1,12 +1,6 @@
-FROM php:7.0-apache
-RUN apt-get update -y
-
-# Install MySQLi extension
+From php:7.0-apache
+#RUN apt-get update && apt-get upgrade -y
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
-RUN apt-get install vim -y
-
-# Copy index.php to Apache document root
+#RUN apt-get install vim -y
 COPY index.php /var/www/html/
-
-# Expose port 80 (not necessary but serves as documentation)
-EXPOSE 80
+expose 80
